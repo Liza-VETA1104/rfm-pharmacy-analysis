@@ -45,11 +45,11 @@ rfm_scored AS (
         
         -- M-Score 
         CASE 
-            WHEN monetary < 500 THEN 1
-            WHEN monetary < 1500 THEN 2
-            WHEN monetary < 3500 THEN 3
-            WHEN monetary < 7500 THEN 4
-            ELSE 5                                  -- 7,500+ ₽
+            WHEN monetary < 500 THEN 1    -- Низкая ценность           
+            WHEN monetary < 1500 THEN 2   -- Средняя (вокруг медианы 1,586)
+            WHEN monetary < 3500 THEN 3   -- Хорошая (вокруг среднего 3,416)
+            WHEN monetary < 7500 THEN 4   -- Высокая (до P90=7,899)
+            ELSE 5                        -- 7,500+ ₽
         END AS m_score
         
     FROM rfm_base
