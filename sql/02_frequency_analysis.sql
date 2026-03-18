@@ -37,7 +37,7 @@ GROUP BY frequency
 ORDER BY frequency
 
     
--- Присвоение оценок Frequency (F-score)
+-- Присвоение оценок Frequency (F-score от 1 до 5)
 WITH customer_freq AS (
     SELECT 
         Card AS customer_id,
