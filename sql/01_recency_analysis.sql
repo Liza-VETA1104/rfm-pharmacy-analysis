@@ -20,7 +20,6 @@ SELECT
     MIN(recency_days) AS min_recency,
     MAX(recency_days) AS max_recency,
     ROUND(AVG(recency_days), 1) AS avg_recency,
-    PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY recency_days) AS p25_recency,
     PERCENTILE_CONT(0.50) WITHIN GROUP (ORDER BY recency_days) AS median_recency,
     PERCENTILE_CONT(0.75) WITHIN GROUP (ORDER BY recency_days) AS p75_recency,
     PERCENTILE_CONT(0.90) WITHIN GROUP (ORDER BY recency_days) AS p90_recency,
