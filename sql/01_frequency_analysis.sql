@@ -36,4 +36,34 @@ FROM (
 GROUP BY frequency
 ORDER BY frequency
 
+    
+-- Присвоение оценок Frequency (F-score)
+WITH customer_freq AS (
+    SELECT 
+        Card AS customer_id,
+        COUNT(*) AS frequency
+    FROM bonuscheques
+    GROUP BY Card
+)
+SELECT 
+    customer_id,
+    frequency,
+    CASE 
+        WHEN frequency = 1 THEN 1              -- 40.5% базы (3,800 клиентов)
+        WHEN frequency BETWEEN 2 AND 3 THEN 2  -- 27.2% базы
+        WHEN frequency BETWEEN 4 AND 5 THEN 3  -- 10.4% базы (до P75)
+        WHEN frequency BETWEEN 6 AND 10 THEN 4 -- 6.1% базы (до P90)
+        WHEN frequency BETWEEN 11 AND 35 THEN 5-- 2.8% базы (топ-10%)
+        WHEN frequency > 35 THEN 5             -- 0.1% (VIP, опт)
+    END AS f_score,
+    CASE 
+        WHEN frequency = 1 THEN 'One-time'
+        WHEN frequency BETWEEN 2 AND 3 THEN 'Low Loyalty'
+        WHEN frequency BETWEEN 4 AND 5 THEN 'Medium Loyalty'
+        WHEN frequency BETWEEN 6 AND 10 THEN 'High Loyalty'
+        WHEN frequency >= 11 THEN 'Super Loyal'
+    END AS frequency_segment
+FROM customer_freq
+ORDER BY frequency;
+
   
