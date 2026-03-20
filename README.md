@@ -27,9 +27,6 @@
 
 <img width="1309" height="627" alt="Снимок экрана 2026-03-18 183619" src="https://github.com/user-attachments/assets/3eb2d8d7-f25b-49dc-9660-f7be748fd1e7" />
 
-
-**Принятые пороги для Frequency**
-
 **Принятые пороги для Frequency**
 
 | Score | Покупок     | Сегмент             | Обоснование                              | % клиентов (примерно) | Бизнес-логика                               |
