@@ -58,7 +58,8 @@ final_rfm AS (
         CONCAT(r_score, '-', f_score, '-', m_score) AS rfm_score,
         CASE 
             -- 1. Особый сегмент
-            WHEN monetary >= 20000 THEN 'Wholesale / VIP'
+            WHEN monetary >= 20000 AND monetary/ frequency <= 7500 THEN 'VIP'
+            WHEN monetary >= 20000 THEN 'Wholesale/Random'
                                           
             -- 2. RFM-сегменты
             WHEN r_score >= 4 AND f_score >= 4 AND m_score >= 4 THEN 'Champions'
@@ -88,7 +89,7 @@ FROM final_rfm
 GROUP BY segment
 ORDER BY 
     CASE 
-        WHEN segment = 'Wholesale / VIP' THEN 1
+        WHEN segment = 'VIP' THEN 1
         WHEN segment = 'Champions' THEN 4
         ELSE 5
     END,
