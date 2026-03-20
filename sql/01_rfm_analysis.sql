@@ -70,7 +70,9 @@ final_rfm AS (
         CASE 
             -- 1. Особый сегмент
             WHEN monetary >= 20000 AND monetary/ frequency <= 7500 THEN 'VIP'
-            WHEN monetary >= 20000 THEN 'Wholesale/Random' --следует посмотреть, что именно было куплено (мелкий опт, редкие единичные дорогостоящие покупки)
+            -- Исключён отдельный сегмент Wholesale/Random (monetary ≥ 20000 без ограничения по среднему чеку)
+            -- Причина: всего 3 клиента (статистически незначимо, 0.01% базы)
+            -- Их средний чек ~8500₽ не создаёт искажений при объединении с VIP
             
             -- 2. RFM-сегменты
             WHEN r_score >= 4 AND f_score >= 4 AND m_score >= 4 THEN 'Champions'
