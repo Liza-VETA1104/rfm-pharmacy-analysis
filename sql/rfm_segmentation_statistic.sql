@@ -59,16 +59,15 @@ final_rfm AS (
         CASE 
             -- 1. Особый сегмент
             WHEN monetary >= 20000 AND monetary/ frequency <= 7500 THEN 'VIP'
-            WHEN monetary >= 20000 THEN 'Wholesale/Random'
-                                          
+                                                      
             -- 2. RFM-сегменты
             WHEN r_score >= 4 AND f_score >= 4 AND m_score >= 4 THEN 'Champions'
             WHEN r_score >= 4 AND f_score >= 3 THEN 'Recent Loyal'
             WHEN r_score >= 3 AND f_score >= 4 THEN 'Loyal'
             WHEN r_score >= 4 THEN 'Recent'
             WHEN f_score >= 4 THEN 'High Frequency'
-            WHEN r_score <= 2 AND f_score <= 2 THEN 'At Risk'
             WHEN r_score = 1 THEN 'Lost'
+            WHEN r_score <= 2 AND f_score <= 2 THEN 'At Risk'
             ELSE 'Mid / Other'
         END AS segment
         
@@ -87,10 +86,4 @@ SELECT
     ROUND(AVG(recency_days), 0) AS avg_recency
 FROM final_rfm
 GROUP BY segment
-ORDER BY 
-    CASE 
-        WHEN segment = 'VIP' THEN 1
-        WHEN segment = 'Champions' THEN 4
-        ELSE 5
-    END,
-    total_revenue DESC;
+ORDER BY pct_of_total DESC
