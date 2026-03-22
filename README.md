@@ -21,6 +21,7 @@
 
 <img width="1173" height="308" alt="Снимок экрана 2026-03-20 144821" src="https://github.com/user-attachments/assets/15f21fc8-53b8-4d2b-b705-87059aeea073" />
 
+[Посмотреть SQL-код для сегментации](sql/rfm_segmentation.sql)
 
 ## 💡 Рекомендации по сегментам
 
