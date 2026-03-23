@@ -125,3 +125,19 @@ final_rfm AS (
 
 SELECT * FROM final_rfm
 ORDER BY monetary DESC, frequency DESC;
+
+
+
+-- СТАТИСТИКА ПО СЕГМЕНТАМ
+SELECT 
+    segment,
+    COUNT(*) AS customers_count,
+    ROUND(100.0 * COUNT(*) / SUM(COUNT(*)) OVER (), 1) AS pct_of_total,
+    ROUND(AVG(monetary), 0) AS avg_monetary,
+    ROUND(SUM(monetary), 0) AS total_revenue,
+    ROUND(100.0 * SUM(monetary) / SUM(SUM(monetary)) OVER (), 1) AS pct_revenue,
+    ROUND(AVG(frequency), 1) AS avg_frequency,
+    ROUND(AVG(recency_days), 0) AS avg_recency
+FROM final_rfm
+GROUP BY segment
+ORDER BY pct_of_total DESC
