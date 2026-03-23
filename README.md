@@ -6,8 +6,8 @@
 Создать эффективную RFM-сегментацию клиентов аптечной сети, которая учитывает специфику отрасли и даёт понятные рекомендации для маркетинга.
 
 **Ссылка на интерактивный дашборд в Metabase**  
-[Открыть дашборд](https://твоя-ссылка.metabaseapp.com/public/dashboard/xxxx-xxxx-xxxx-xxxx)  
-(если public sharing включён)
+[[Открыть дашборд](https://твоя-ссылка.metabaseapp.com/public/dashboard/xxxx-xxxx-xxxx-xxxx)  
+(если public sharing включён)](http://metabase.simulative.ru/public/dashboard/c701d917-05b6-41e3-9b3d-f8c62de96a41)
 
 **Данные**  
 - Таблица: `Bonusscheques`  
