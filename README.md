@@ -29,7 +29,8 @@
 
 
 
-<img width="1173" height="308" alt="Снимок экрана 2026-03-20 144821" src="https://github.com/user-attachments/assets/15f21fc8-53b8-4d2b-b705-87059aeea073" />
+<img width="1172" height="303" alt="image" src="https://github.com/user-attachments/assets/39aa83af-59d7-45bd-9d85-19b10c6c6f0e" />
+
 
 
 
